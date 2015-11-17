@@ -1,7 +1,7 @@
 <?php namespace Infinety\LogManager\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use starter\Http\Requests;
+use starter\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use App;
