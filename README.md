@@ -20,7 +20,7 @@ $ composer require infinety-es/logmanager
 Then add the service provider to your config/app.php file:
 
 ``` 
-'Infinety\LogManager\LogManagerServiceProvider',
+Infinety\LogManager\LogManagerServiceProvider::class
 ```
 
 ## Usage
