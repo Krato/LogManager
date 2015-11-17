@@ -51,7 +51,7 @@
 
     </div><!-- /.box-body -->
   </div><!-- /.box -->
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+  <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
 @endsection
 
 @section('custom_js')
