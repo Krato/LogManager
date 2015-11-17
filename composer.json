@@ -1,6 +1,6 @@
 {
     "name": "infinety-es/logmanager",
-    "description": "An interface to preview, download and delete Laravel log files.",
+    "description": "Laravel 5 interface to preview, download and delete Laravel log files.",
     "keywords": [
         "log manager",
         "logs",
