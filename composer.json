@@ -1,0 +1,44 @@
+{
+    "name": "infinety-es/logmanager",
+    "description": "An interface to preview, download and delete Laravel log files.",
+    "keywords": [
+        "log manager",
+        "logs",
+        "laravel",
+        "log interface"
+    ],
+    "homepage": "https://github.com/krato/LogManager",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Infinety",
+            "email": "hello@infinety.es"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.1",
+        "php" : ">=5.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "scrutinizer/ocular": "~1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Infinety\\LogManager\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Infinety\\LogManager\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
