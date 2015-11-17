@@ -29,7 +29,7 @@
         <tbody>
           @foreach ($logs as $k => $log)
           <tr>
-            <th scope="row">{{ $k+1 }}</th>
+            <td scope="row">{{ $k+1 }}</td>
             <td>{{ Carbon::createFromTimeStamp($log['last_modified'])->formatLocalized('%d %B %Y') }}</td>
             <td>{{ Carbon::createFromTimeStamp($log['last_modified'])->formatLocalized('%H:%M') }}</td>
             <td class="text-right">{{ round((int)$log['file_size']/1048576, 2).' MB' }}</td>
