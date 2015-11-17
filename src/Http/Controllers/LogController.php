@@ -22,7 +22,7 @@ class LogController extends Controller {
 
 	public function index()
 	{
-		$disk = Storage::disk('local');
+		$disk = Storage::disk('storage');
 		$files = $disk->files('logs');
 		$this->data['logs'] = [];
 
@@ -56,7 +56,7 @@ class LogController extends Controller {
 	        abort(403, 'Unauthorized access - you do not have the necessary permission to preview logs.');
 	    }
 
-		$disk = Storage::disk('local');
+		$disk = Storage::disk('storage');
 
 		if ($disk->exists('logs/'.$file_name)) {
 			$this->data['log'] = [
@@ -86,7 +86,7 @@ class LogController extends Controller {
 	        abort(403, 'Unauthorized access - you do not have the necessary permission to download logs.');
 	    }
 
-		$disk = Storage::disk('local');
+		$disk = Storage::disk('storage');
 
 		if ($disk->exists('logs/'.$file_name)) {
 			return response()->download(storage_path('logs/'.$file_name));
@@ -106,7 +106,7 @@ class LogController extends Controller {
 	        abort(403, 'Unauthorized access - you do not have the necessary permission to delete logs.');
 	    }
 
-		$disk = Storage::disk('local');
+		$disk = Storage::disk('storage');
 
 		if ($disk->exists('logs/'.$file_name)) {
 			$disk->delete('logs/'.$file_name);

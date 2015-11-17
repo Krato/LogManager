@@ -51,7 +51,7 @@
 
     </div><!-- /.box-body -->
   </div><!-- /.box -->
-
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 @endsection
 
 @section('custom_js')
@@ -68,6 +68,9 @@
             $.ajax({
                 url: delete_url,
                 type: 'DELETE',
+                beforeSend: function (request){
+                    request.setRequestHeader("X-CSRF-TOKEN", $('[name="_token"]').val());
+                },
                 success: function(result) {
                     // Show an alert with the result
                     new PNotify({
