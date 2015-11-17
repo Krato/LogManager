@@ -59,7 +59,7 @@ If you discover any security related issues, please email :author_email instead 
 ## Credits
 
 - [Cristian Tabacitu](https://github.com/tabacitu)
-- [Infinety]
+- [Infinety](http:://infinety.es)
 
 ## License
 
