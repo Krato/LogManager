@@ -12,7 +12,7 @@ Laravel 5 interface to preview, download and delete Laravel log files.
 
 ## V2
 
-Update to parse Log files (Thanks to @rap2hpoutre package)
+Update to parse Log files (Thanks to [@rap2hpoutre](https://github.com/rap2hpoutre/laravel-log-viewer) package)
 
 ## Install
 
