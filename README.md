@@ -9,6 +9,11 @@
 
 Laravel 5 interface to preview, download and delete Laravel log files.
 
+
+## V2
+
+Update to parse Log files (Thanks to @rap2hpoutre package)
+
 ## Install
 
 Via Composer
@@ -59,6 +64,7 @@ If you discover any security related issues, please email :author_email instead 
 ## Credits
 
 - [Cristian Tabacitu](https://github.com/tabacitu)
+- [rap2hpoutre](https://github.com/rap2hpoutre/laravel-log-viewer)
 - [Infinety](http:://infinety.es)
 
 ## License

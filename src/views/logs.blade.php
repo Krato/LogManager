@@ -1,5 +1,9 @@
 @extends('admin.layout')
+@section('custom_css')
+        <!-- DATA TABLES -->
+<link type="text/css" rel="stylesheet" href="{{ asset('admin_theme/assets/plugins/sweetalert/sweetalert.css') }}">
 
+@endsection
 @section('content-header')
 	<section class="content-header">
 	  <h1>
@@ -55,48 +59,66 @@
 @endsection
 
 @section('custom_js')
+    <script src="{{ asset('/admin_theme/assets/plugins/sweetalert/sweetalert.min.js') }}" type="text/javascript"></script>
 <script>
   jQuery(document).ready(function($) {
 
     // capture the delete button
-    $("[data-button-type=delete]").click(function(e) {
-        e.preventDefault();
-        var delete_button = $(this);
-        var delete_url = $(this).attr('href');
+      $("[data-button-type=delete]").click(function(e) {
+          e.preventDefault();
+          var delete_button = $(this);
+          var delete_url = $(this).attr('href');
 
-        if (confirm("{{ trans('log.delete_confirm') }}") == true) {
-            $.ajax({
-                url: delete_url,
-                type: 'DELETE',
-                beforeSend: function (request){
-                    request.setRequestHeader("X-CSRF-TOKEN", $('[name="_token"]').val());
-                },
-                success: function(result) {
-                    // Show an alert with the result
-                    new PNotify({
-                        title: "{{ trans('log.delete_confirmation_title') }}",
-                        text: "{{ trans('log.delete_confirmation_message') }}",
-                        type: "success"
-                    });
-                    // delete the row from the table
-                    delete_button.parentsUntil('tr').parent().remove();
-                },
-                error: function(result) {
-                    // Show an alert with the result
-                    new PNotify({
-                        title: "{{ trans('log.delete_error_title') }}",
-                        text: "{{ trans('log.delete_error_message') }}",
-                        type: "warning"
-                    });
-                }
-            });
-        } else {
-            new PNotify({
-                title: "{{ trans('log.delete_cancel_title') }}",
-                text: "{{ trans('log.delete_cancel_message') }}",
-                type: "info"
-            });
-        }
+
+          swal({  title: "<?php echo _(Lang::get('crud.delete_confirm')) ?>",
+              text: "<?php echo _(Lang::get('crud.delete_info')) ?>",
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "<?php echo _(trans('crud.delete_confirm_yes_delete')) ?>",
+              cancelButtonText: "{{ _(trans('crud.delete_cancel')) }}",
+              closeOnConfirm: true
+          }, function(isConfirm){
+              if (isConfirm) {
+
+                  $.ajax({
+                      url: delete_url,
+                      beforeSend: function (request){
+                          request.setRequestHeader("X-CSRF-TOKEN", $('[name="_token"]').val());
+                      },
+                      type: 'DELETE',
+                      success: function(result) {
+                          // Show an alert with the result
+                          new PNotify({
+                              title: "{{ _(trans('crud.delete_confirmation_title')) }}",
+                              text: "{{ _(trans('crud.delete_confirmation_message')) }}",
+                              type: "success"
+                          });
+                          // delete the row from the table
+                          delete_button.parentsUntil('tr').parent().remove();
+                      },
+                      error: function(result) {
+                          // Show an alert with the result
+                          new PNotify({
+                              title: "{{ _(trans('crud.delete_confirmation_not_title')) }}",
+                              text: "{{ _(trans('crud.delete_confirmation_not_message')) }}",
+                              type: "warning"
+                          });
+                      }
+                  });
+
+              } else {
+
+                  new PNotify({
+                      title: "{{ _(trans('crud.delete_confirmation_not_deleted_title')) }}",
+                      text: "{{ _(trans('crud.delete_confirmation_not_deleted_message')) }}",
+                      type: "info"
+                  });
+
+              }
+          });
+
+
       });
 
   });
